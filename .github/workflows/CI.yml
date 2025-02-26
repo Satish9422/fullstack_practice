@@ -23,10 +23,7 @@ jobs:
           cd codebase/rdicidr-0.1.0/ 
           npm install
           npm run lint
-      - name: Run Prettier
-        run: |      
-          cd codebase/rdicidr-0.1.0/ 
-          run prettier -g install
+          npm install -g prettier
           npm run prettier     
           CI=true npm run test
           npm run build
