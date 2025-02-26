@@ -18,26 +18,17 @@ jobs:
           node-version: 15
           cache: 'npm'
           cache-dependency-path: "codebase/rdicidr-0.1.0/"
-      - name: Install Dependencies    
+      - name: Build React APP    
         run: |
           cd codebase/rdicidr-0.1.0/ 
           npm install
-      - name: run ESLint
-        run: |  
-          cd codebase/rdicidr-0.1.0/   
           npm run lint
       - name: Run Prettier
         run: |      
           cd codebase/rdicidr-0.1.0/ 
-          run install -g prettier
+          run prettier -g install
           npm run prettier     
-      - name: Run Jest test
-        run: |      
-          cd codebase/rdicidr-0.1.0/ 
           CI=true npm run test
-      - name: Run Build
-        run: |      
-          cd codebase/rdicidr-0.1.0/ 
           npm run build
 
   # publish-gpr:
