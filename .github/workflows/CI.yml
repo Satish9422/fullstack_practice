@@ -29,7 +29,7 @@ jobs:
       - name: Run Prettier
         run: |      
           cd codebase/rdicidr-0.1.0/ 
-          run prettier -g install
+          run install -g prettier
           npm run prettier     
       - name: Run Jest test
         run: |      
