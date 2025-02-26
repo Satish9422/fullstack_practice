@@ -16,6 +16,7 @@ jobs:
            docker tag fullstack_practice:latest satish680/fullstack:practice
            docker push satish680/fullstack:practice
            minikube start --memory=2500
+           cd k8
            kubectl apply -f namespace.yml
            kubectl apply -f secret.yml
            kubectl apply -f deployment.yml
