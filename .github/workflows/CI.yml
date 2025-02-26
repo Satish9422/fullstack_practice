@@ -4,7 +4,7 @@
 name: Continuous Integration Pipeline
 
 on:
-  pull_request:
+  push:
     branches: 
      main
 
@@ -15,23 +15,30 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
+          node-version: 15
+          cache: "npm"
+          cache-dependency-path: "codebase/rdicidr-0.1.0/"
+      - run: codebase/rdicidr-0.1.0/ 
+      - run: npm install
+      - run: npm run lint
+      - run: run prettier -g install
+      - run: npm run prettier     
+      - run: CI=true npm run test
+      - run: npm run build
 
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  # publish-gpr:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: read
+  #     packages: write
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #         registry-url: https://npm.pkg.github.com/
+  #     - run: npm ci
+  #     - run: npm publish
+  #       env:
+  #         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
