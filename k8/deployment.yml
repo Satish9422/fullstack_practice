@@ -21,8 +21,8 @@ spec:
         ports:
         - containerPort: 80
         env:
-         name: MY_SECRET
-         valueFrom:
+         - name: MY_SECRET
+           valueFrom:
            secretKeyRef:
              name: secret-basic-auth
              value: MY_SECRET
