@@ -15,7 +15,7 @@ FROM nginx:alpine AS production
 # WORKDIR
 
 COPY --from=builder /app/build /usr/share/nginx/html
-CMD ["nginx","-g","daemon 0ff;"]
+CMD ["nginx","-g","daemon off;"]
 # RUN 
 
 # ENTRYPOINT 
