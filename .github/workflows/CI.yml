@@ -18,7 +18,7 @@ jobs:
           node-version: 15
           cache: "npm"
           cache-dependency-path: "codebase/rdicidr-0.1.0/"
-      - run: codebase/rdicidr-0.1.0/ 
+      - run: cd codebase/rdicidr-0.1.0/ 
       - run: npm install
       - run: npm run lint
       - run: run prettier -g install
