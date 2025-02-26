@@ -1,4 +1,4 @@
-name: Continuous Integration Pipeline
+name: Continuous Deployment Pipeline
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
      main
 
 jobs:
-  build:
+  CD:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
