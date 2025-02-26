@@ -23,6 +23,6 @@ spec:
         env:
          - name: MY_SECRET
            valueFrom:
-           secretKeyRef:
-             name: secret-basic-auth
-             value: MY_SECRET
+            - secretKeyRef:
+               name: secret-basic-auth
+               key: MY_SECRET
